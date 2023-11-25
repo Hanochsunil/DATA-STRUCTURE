@@ -1,0 +1,51 @@
+#include <stdio.h>
+void binarysearch(int k,int a[],int size)
+{
+    int l=0,h=size-1,flag=0,mid;
+    
+    while(l<=h)
+    {
+    mid=(l+h)/2;
+    if(a[mid]==k)
+    {
+        flag=1;
+        break;
+    }
+    else if(k<a[mid])
+    { 
+        h=mid-1;
+    }
+    else 
+    {
+        l=mid+1;
+    }
+    }
+    if(flag==0)
+    {
+        printf("not found");
+        
+    }
+    else
+    {
+        printf("found at %d",mid+1);
+    }
+}
+
+
+void main()
+{
+    int n,i,searchkey,a[100];
+    printf("ENTER THE SIZE OF THE ARRAY");
+    scanf("%d",&n);
+    printf("enter the elemnets");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("ENTER THE ELEMENT TO BES SEARCHED");
+    scanf("%d",&searchkey);
+    binarysearch(searchkey,a,n);
+    
+    
+    
+}
