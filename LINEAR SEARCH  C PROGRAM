@@ -1,0 +1,39 @@
+#include <stdio.h>
+void main()
+{   int n,a[100],searchkey,flag=0,i;
+    printf("ENTER THE SIZE OF THE ARRAY");
+    scanf("%d",&n);
+    printf("ENTER THE ELEMENTS");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("ENTER THE NUMBER TO BE SEARCHED");
+    scanf("%d",&searchkey);
+    for(i=0;i<n;i++)
+    {
+        if(searchkey==a[i])
+    
+        {
+           flag=1; 
+           break;
+        }
+       else
+       {
+           flag=0;
+       }
+      
+    }
+    if(flag==0)
+    {
+        printf("ELEMENT NOT FOUND");
+        
+    }
+    else
+    {
+       printf("ELEMNT FOUND AT %d",i+1); 
+    }
+    
+    
+   
+}
