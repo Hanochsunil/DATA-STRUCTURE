@@ -1,0 +1,170 @@
+#include <stdio.h>
+
+int a[100], i, size, front = -1, rear = -1;
+
+void display();
+void inject(int ITEM);
+void push(int ITIM);
+void pop();
+void reject();
+
+int main()
+{
+    int choice, item, ITIM;
+    
+    printf("ENTER THE SIZE OF THE QUEUE: ");
+    scanf("%d", &size);
+    
+    printf("1-PUSH\n2-POP\n3-INJECT\n4-REJECT\n5-DISPLAY\n6-EXIT\n");
+    
+    do
+    {
+        printf("ENTER YOUR CHOICE: ");
+        scanf("%d", &choice);
+        
+        switch(choice)
+        {
+            case 1:
+                printf("ENTER THE NUMBER TO BE PUSHED: ");
+                scanf("%d", &item);
+                push(item);
+                break;
+                
+            case 2:
+                pop();
+                break;
+                
+            case 3:
+                printf("ENTER THE NUMBER TO BE INJECTED: ");
+                scanf("%d", &item);
+                inject(item);
+                break;
+                
+            case 4:
+                reject();
+                break;
+                
+            case 5:
+                display();
+                break;
+                
+            case 6:
+                break;
+                
+            default:
+                printf("INVALID CHOICE\n");
+                break;
+        }
+    } while(choice != 6);
+    
+    return 0;
+}
+
+void push(int ITEM)
+{
+    if(front == 0 && rear == size - 1)
+    {
+        printf("THE QUEUE IS FULL\n");
+    }
+    else if(rear == -1)
+    {
+        front = 0;
+        rear = 0;
+        a[front] = ITEM;
+    }
+    else if(front > 0)
+    {
+        front--;
+        a[front] = ITEM;
+    }
+    else
+    {
+        for(i = rear; i >= front; i--)
+        {
+            a[i + 1] = a[i];
+        }
+        a[front] = ITEM;
+    }
+}
+
+void pop()
+{
+    if(front == -1)
+    {
+        printf("THE QUEUE IS EMPTY\n");
+    }
+    else if(front == rear)
+    {
+        printf("THE DELETED ELEMENT IS %d\n", a[front]);
+        front = -1;
+        rear = -1;
+    }
+    else
+    {
+        printf("THE DELETED ITEM IS %d\n", a[front]);
+        front++;
+    }
+}
+
+void inject(int ITEM)
+{
+    if(front == 0 && rear == size - 1)
+    {
+        printf("THE QUEUE IS FULL\n");
+    }
+    else if(rear == -1)
+    {
+        front = 0;
+        rear = 0;
+        a[rear] = ITEM;
+    }
+    else if(rear > size - 1)
+    {
+        rear++;
+        a[rear] = ITEM;
+    }
+    else
+    {
+        for(i = front; i <= rear; i++)
+        {
+            a[i - 1] = a[i];
+        }
+        a[rear] = ITEM;
+        front--;
+    }
+}
+
+void reject()
+{
+    if(front == -1)
+    {
+        printf("THE QUEUE IS EMPTY\n");
+    }
+    else if(front == rear)
+    {
+        printf("THE DELETED ELEMENT IS %d\n", a[rear]);
+        front = -1;
+        rear = -1;
+    }
+    else
+    {
+        printf("THE DELETED ELEMENT IS %d\n", a[rear]);
+        rear--;
+    }
+}
+
+void display()
+{
+    if(front == -1)
+    {
+        printf("THE QUEUE IS EMPTY\n");
+    }
+    else
+    {
+        for(i = front; i <= rear; i++)
+        {
+            printf("%d\t", a[i]);
+        }
+        printf("\n");
+    }
+}
