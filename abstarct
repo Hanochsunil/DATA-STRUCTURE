@@ -1,0 +1,40 @@
+public class abexample {
+    public static void main(String ar[])
+    {
+         vishnuphone v =new vishnuphone();
+         v.faceid();
+         v.vpn();
+        v.travel();
+
+    }
+    
+}
+ abstract class hanochphone
+ {
+    void fingerprint()
+    {
+       System.out.println("finger print scanning..........");
+
+    }
+    abstract public void faceid();
+    abstract public void vpn();
+    abstract public void travel();
+    
+    public String toString() {
+        return "hanochphone []";
+    }
+ }
+ abstract class libinphone extends hanochphone
+ {
+     public void vpn()
+     {
+        System.out.println("vpn connecting/nUS server connected successsfulyy....");
+     }
+ }
+ class vishnuphone extends libinphone
+ {
+   public void travel()
+    {
+      System.out.println("Travelling");
+     }
+    }
