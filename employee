@@ -1,0 +1,43 @@
+import java.util.*;
+class employeeee {
+    String name;
+    int emplyeeno;
+    float basicpay;
+    double da;
+    double hra;
+    
+    void getdata(String nam, int num, float basic) {
+        name = nam;
+        emplyeeno = num;
+        basicpay = basic;
+    }
+    
+    void calc() {
+        da = basicpay * 0.2;
+        hra = basicpay * 0.5;
+    }
+    
+    void print() {
+        System.out.println("NAME - " + name);
+        System.out.println("EMPLOYEE NO - " + emplyeeno);
+        System.out.println("DA - " + da);
+        System.out.println("HRA - " + hra);
+    }
+}
+
+class employ {
+    public static void main(String ar[]) {
+        System.out.println("ENTER THE NAME");
+        Scanner s = new Scanner(System.in);
+        String na = s.nextLine();
+        System.out.println("ENTER YOUR EMPLOYEE NO");
+        int n = s.nextInt();
+        System.out.println("ENTER YOUR BASIC PAY");
+        float bp = s.nextFloat();
+        employeeee e = new employeeee();
+        e.getdata(na, n, bp);
+        e.calc();
+        e.print();
+    }
+}
+
